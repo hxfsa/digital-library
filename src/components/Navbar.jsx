@@ -7,7 +7,7 @@ import admin from "../assets/icons/admin.svg";
 
 export const Navbar = () => {
   return (
-    <div className="navbar bg-primaryLight flex justify-between">
+    <nav className="navbar bg-primaryLight flex justify-between">
       <Link to="/">
         <img src={logo} alt="logo" className="h-24" />
       </Link>
@@ -26,6 +26,6 @@ export const Navbar = () => {
           <img src={admin} alt="admin-icon" className="h-8 px-4" />
         </button>
       </div>
-    </div>
+    </nav>
   );
 };
