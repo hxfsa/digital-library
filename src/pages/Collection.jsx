@@ -1,7 +1,10 @@
 import React from 'react'
 
+import { MoreBooksButton } from "../components/MoreBooksButton"
 export const Collection = () => {
   return (
-    <div>Collection</div>
+    <div className="collection">
+      <MoreBooksButton/>
+    </div>
   )
 }
