@@ -8,7 +8,7 @@ import instagram from "../assets/icons/instagram.svg";
 
 export const Footer = () => {
   return (
-    <footer className="footer bg-primaryLight flex justify-between w-full px-8 ">
+    <footer className="footer flex justify-between w-full px-8 bg-primaryLight pt-6 items-center ">
       <div className="logo-rights flex items-end gap-4">
         <img src={logo} alt="logo" className="h-10" />
         <span className="text-xs pb-1	"> © 2023 Books Kingdom. All Rights Reserved.</span>

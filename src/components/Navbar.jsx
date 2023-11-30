@@ -7,7 +7,7 @@ import admin from "../assets/icons/admin.svg";
 
 export const Navbar = () => {
   return (
-    <nav className="navbar bg-primaryLight flex justify-between">
+    <nav className="navbar flex justify-between bg-primaryLight">
       <Link to="/">
         <img src={logo} alt="logo" className="h-24" />
       </Link>
