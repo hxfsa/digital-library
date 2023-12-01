@@ -3,83 +3,130 @@
 @tailwind utilities;
 
 * {
-    background-color: #F4F2F2;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  background-color: #f4f2f2;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 @font-face {
-    font-family: "RougeScript";
-    src: url("/fonts/RougeScript-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "Montserrat";
-    src: url("/fonts/Montserrat-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family: "RougeScript";
+  src: url("/fonts/RougeScript-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
-  @font-face {
-    font-family: "DancingScript";
-    src: url("/fonts/DancingScript-VariiableFont_wght.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+@font-face {
+  font-family: "DancingScript";
+  src: url("/fonts/DancingScript-VariiableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
+.footer {
+  /* position: fixed; */
+  bottom: 0;
+}
 
+.newsletter {
+  /* position: fixed; */
+  /* top: -50; */
+  bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
   .footer {
-    /* position: fixed; */
-    bottom: 0;
-
+    display: flex;
+    align-items: flex-end;
   }
 
   .newsletter {
-    /* position: fixed; */
-    /* top: -50; */
-    bottom: 0;
-
+    display: flex;
+    flex-direction: column;
   }
 
-  @media screen and (max-width:768px) {
-
-    .footer {
-        display: flex;
-        align-items: flex-end;
-    }
-
-    .newsletter {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .updates {
-        padding-bottom: 2rem;
-    }
-    
-    .section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .intro-searching {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .intro-searching > h1 {
-     
-        font-size: 2.75rem;
-    
-    }  
-    .intro-searching > h2 {
-     
-      font-size: 2.75rem;
-  
-  }
+  .updates {
+    padding-bottom: 2rem;
   }
 
-  input:focus{
-    outline: none;
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .intro-searching {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .intro-searching > h1 {
+    font-size: 2.75rem;
+  }
+  .intro-searching > h2 {
+    font-size: 2.75rem;
+  }
+  .books {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .book {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bookInfos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .search  {
+    display: flex;
+    justify-content: center;
+    margin: 0 ;
+  }
+
+  .collection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .searchBtn > button {
+    display: none;
+  }
+
+}
+
+input:focus {
+  outline: none;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .books {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .books {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .book {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .search {
+    margin-right: 5rem;
+    margin-top: 2rem;
+  }
 }
