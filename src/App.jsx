@@ -18,13 +18,13 @@ import { Footer } from "./components/Footer";
 
 function App() {
   return (
-    <div className="app ">
+    <div className="app">
       <Navbar />
       <main className="">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collection" element={<Collection />} />
-          <Route path="/:id" element={<BookDetails />} />
+          <Route path="book/:id" element={<BookDetails />} />
           <Route path="*" element={<NotFound />} />
 
           {/* <Route path="/login" element={<Login />} /> */}

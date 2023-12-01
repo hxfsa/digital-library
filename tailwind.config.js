@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
         script: ["RougeScript", "sans-serif"],
+        DancingScript: ["DancingScript", "sans-serif" ]
       },
 
     },
