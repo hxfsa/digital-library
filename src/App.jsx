@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 
-
 //css
 import "./App.css";
 
@@ -8,13 +7,12 @@ import "./App.css";
 import { Home } from "./pages/Home";
 import { Collection } from "./pages/Collection";
 import { NotFound } from "./pages/NotFound";
+import { Login } from "./pages/Login";
 import { BookDetails } from "./pages/BookDetails";
 
 //components
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
-
-
 
 function App() {
   return (
@@ -26,6 +24,7 @@ function App() {
           <Route path="/collection" element={<Collection />} />
           <Route path="book/:id" element={<BookDetails />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="login" element={<Login />} />
 
           {/* <Route path="/login" element={<Login />} /> */}
         </Routes>

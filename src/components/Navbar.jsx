@@ -23,7 +23,9 @@ export const Navbar = () => {
           </ul>
         </div>
         <button>
-          <img src={admin} alt="admin-icon" className="h-8 px-4" />
+          <Link to="/login">
+            <img src={admin} alt="admin-icon" className="h-8 px-4" />
+          </Link>
         </button>
       </div>
     </nav>
