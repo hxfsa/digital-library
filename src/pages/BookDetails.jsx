@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect} from "react";
 
 //assets
 import mdt from "../assets/images/mdt.png";
@@ -8,7 +8,10 @@ import twitter from "../assets/icons/twitter.svg";
 import whatsapp from "../assets/icons/whatsapp.svg";
 import heart from "../assets/icons/heart.svg";
 
-export const BookDetails = () => {
+export const BookDetails = ( { setShowNavbarAndFooter }) => {
+  useEffect(() => {
+    setShowNavbarAndFooter(true);
+  }, []);
   return (
     <div className="bookDetails flex justify-center ">
       <div className="bookDetailsContainer bg-white w-8/12 h-1/2 mb-52 flex flex-row">

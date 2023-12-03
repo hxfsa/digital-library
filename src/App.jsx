@@ -13,23 +13,29 @@ import { BookDetails } from "./pages/BookDetails";
 //components
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import { useState } from "react";
 
 function App() {
+  const [showNavbarAndFooter, setShowNavbarAndFooter] = useState(true);
   return (
     <div className="app">
-      <Navbar />
+      {showNavbarAndFooter && (
+          <Navbar />
+      )}
       <main className="">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/collection" element={<Collection />} />
-          <Route path="book/:id" element={<BookDetails />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="login" element={<Login />} />
+          <Route path="/" element={<Home setShowNavbarAndFooter={setShowNavbarAndFooter}  />} />
+          <Route path="/collection" element={<Collection setShowNavbarAndFooter={setShowNavbarAndFooter} />} />
+          <Route path="book/:id" element={<BookDetails setShowNavbarAndFooter={setShowNavbarAndFooter} />} />
+          <Route path="*" element={<NotFound setShowNavbarAndFooter={setShowNavbarAndFooter}/>} />
+          <Route path="login" element={<Login setShowNavbarAndFooter={setShowNavbarAndFooter}/>} />
 
           {/* <Route path="/login" element={<Login />} /> */}
         </Routes>
       </main>
-      <Footer />
+      {showNavbarAndFooter && (
+          <Footer />
+      )}
     </div>
   );
 }

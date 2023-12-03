@@ -1,7 +1,11 @@
 import React from "react";
 import notFound from "../assets/images/404.png";
 import { Link } from "react-router-dom";
-export const NotFound = () => {
+import { useEffect } from "react";
+export const NotFound = ( { setShowNavbarAndFooter}) => {
+  useEffect(() => {
+    setShowNavbarAndFooter(false);
+  }, []);
   return (
     <div className="notFound flex flex-col items-center bg-white">
       <img src={notFound} alt="404 image" className="" />

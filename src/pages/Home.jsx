@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect} from "react";
 import { NewsLetter } from "../components/NewsLetter";
 import { SearchBar } from "../components/SearchBar";
 
@@ -6,7 +6,10 @@ import { SearchBar } from "../components/SearchBar";
 
 import kingdom from "../assets/images/kingdom.png";
 
-export const Home = () => {
+export const Home = ( { setShowNavbarAndFooter}) => {
+  useEffect(() => {
+    setShowNavbarAndFooter(true);
+  }, []);
   return (
     <div className="home bg-primaryLight">
       <div className="section flex justify-around pt-16 bg-primaryLight">

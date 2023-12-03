@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect} from "react";
 
 //components
 import { MoreBooksButton } from "../components/MoreBooksButton";
@@ -10,7 +10,10 @@ import hp2 from "../assets/images/hp2.png";
 import adcc from "../assets/images/adcc.png";
 import hp8 from "../assets/images/hp8.png";
 
-export const Collection = () => {
+export const Collection = ( { setShowNavbarAndFooter}) => {
+  useEffect(() => {
+    setShowNavbarAndFooter(true);
+  }, []);
   const books = [
     {
       id: 1,
