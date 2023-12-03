@@ -28,23 +28,48 @@
   font-style: normal;
 }
 
+
+input:focus {
+  outline: none;
+}
+
+/* FOOTER */
+
 .footer {
-  /* position: fixed; */
+  /* position: relative ; */
   bottom: 0;
 }
 
+
+/* NEWSLETTER  */
 .newsletter {
   /* position: fixed; */
   /* top: -50; */
   bottom: 0;
 }
 
+
+/* BOOK DETAILS  */
+.bookTable > tbody > tr > td {
+  padding: 1rem;
+  text-align: justify;
+  border: solid 1px #e9e7e7fa;
+  background-color: white;
+}
+
+
+
+
+
+/* MOBILE  */
 @media screen and (max-width: 768px) {
+  /* FOOTER  */
   .footer {
     display: flex;
     align-items: flex-end;
   }
 
+  /* NEWSLETTER  */
   .newsletter {
     display: flex;
     flex-direction: column;
@@ -54,6 +79,7 @@
     padding-bottom: 2rem;
   }
 
+  /* HOMEPAGE */
   .section {
     display: flex;
     flex-direction: column;
@@ -70,6 +96,8 @@
   .intro-searching > h2 {
     font-size: 2.75rem;
   }
+
+  /* COLLECTION  */
   .books {
     display: flex;
     flex-wrap: wrap;
@@ -88,12 +116,6 @@
     text-align: center;
   }
 
-  .search  {
-    display: flex;
-    justify-content: center;
-    margin: 0 ;
-  }
-
   .collection {
     display: flex;
     flex-direction: column;
@@ -101,16 +123,37 @@
     justify-content: center;
   }
 
+
+
+  .search {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
   .searchBtn > button {
     display: none;
   }
 
+   /* BOOK DETAILS  */
+  .bookDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bookTable {
+    width: 95%;
+  }
+
+  .bookCover {
+    padding-top: 2rem;
+  }
 }
 
-input:focus {
-  outline: none;
-}
+
+/* TABLET  */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* COLLECTION  */
   .books {
     display: flex;
     flex-wrap: wrap;
@@ -129,4 +172,6 @@ input:focus {
     margin-right: 5rem;
     margin-top: 2rem;
   }
+ 
 }
+
