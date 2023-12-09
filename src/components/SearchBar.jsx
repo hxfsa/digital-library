@@ -8,7 +8,7 @@ export const SearchBar = () => {
       <input
         type="text"
         placeholder="Search for a book..."
-        className="placeholder:italic bg-white pl-8 pr-28 py-4 rounded-l-md"
+        className="placeholder:italic bg-white pl-8 pr-28 py-4 rounded-l-md "
         autoFocus
       />
       <button className="searchBtn bg-primaryDark h-16 w-16 flex items-center justify-center rounded-r-md">

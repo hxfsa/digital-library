@@ -41,13 +41,13 @@ export const Collection = ( { setShowNavbarAndFooter}) => {
     },
   ];
   return (
-    <div className="collection">
-      <div className="search flex justify-end mr-14 mt-8">
+    <div className="collection bg-primaryLight">
+      <div className="search flex justify-end mr-14 pt-8 bg-primaryLight">
         <SearchBar />
       </div>
-      <div className="books flex justify-around mt-16">
+      <div className="books flex justify-around mt-16 bg-primaryLight">
         {books.map((book) => (
-          <div className="book ease-in hover:scale-110 transition duration-200 mb-20">
+          <div className="book ease-in hover:scale-110 transition duration-200 mb-20 bg-primaryLight">
             <img src={book.image} alt={book.title} key={book.id} />
             <div className="bookInfos text-center	flex flex-col">
               <h1 className="font-bold"> {book.title}</h1>
