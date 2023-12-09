@@ -14,8 +14,7 @@ export const NewsLetter = () => {
           aria-label="Email Address"
           placeholder="Email Address"
           type="email"
-          required
-          className="placeholder:text-white font-semibold bg-primaryDark border py-2 pl-4 pr-8 rounded-l-md"
+          className="newsletterInput placeholder:text-primaryLight placeholder:italic bg-primaryDark border py-2 pl-4 pr-8 rounded-l-md text-primaryLight"
         />
           <button className="text-primaryDark bg-white border-white border-1 p-2 font-semibold text-s rounded-r-md">Subscribe</button>
       </form>
