@@ -1,3 +1,220 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  background-color: #f4f2f2;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+@font-face {
+  font-family: "RougeScript";
+  src: url("/fonts/RougeScript-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DancingScript";
+  src: url("/fonts/DancingScript-VariiableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+input:focus {
+  outline: none;
+}
+
+/* FOOTER */
+
+.footer {
+  /* position: relative ; */
+  bottom: 0;
+}
+
+
+/* NEWSLETTER  */
+.newsletter {
+  /* position: fixed; */
+  /* top: -50; */
+  bottom: 0;
+}
+
+
+/* BOOK DETAILS  */
+.bookTable > tbody > tr > td {
+  padding: 1rem;
+  text-align: justify;
+  border: solid 2px #e9e7e7fa;
+  background-color: white;
+}
+
+
+
+/* ADMIN */
+.menuSection > span {
+  background-color: #9837A3;
+  font-size: x-large;
+  color: white;
+  width: 14rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+}
+.menuSection > span:hover {
+  background-color: #F4F2F2 ;
+  color: #9837A3;
+  border-radius:10px;
+}
+
+.offBtn  {
+  font-size: x-large;
+  color: white;
+  width: 14rem;
+  height: 4rem;
+}
+
+
+
+/* MOBILE  */
+@media screen and (max-width: 768px) {
+  /* FOOTER  */
+  .footer {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  /* NEWSLETTER  */
+  .newsletter {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .updates {
+    padding-bottom: 2rem;
+  }
+
+  /* HOMEPAGE */
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .intro-searching {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .intro-searching > h1 {
+    font-size: 2.75rem;
+  }
+  .intro-searching > h2 {
+    font-size: 2.75rem;
+  }
+
+  /* COLLECTION  */
+  .books {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .book {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bookInfos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .collection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
+  .search {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+  .searchBtn > button {
+    display: none;
+  }
+
+   /* BOOK DETAILS  */
+  .bookDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bookTable {
+    width: 95%;
+  }
+
+  .bookCover {
+    padding-top: 2rem;
+  }
+
+  .title {
+    text-align: center;
+  }
+}
+
+
+/* TABLET  */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* COLLECTION  */
+  .books {
+    display: flex;
+    flex-wrap: wrap;
+  }
+ 
+  .book {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .search {
+    margin-right: 5rem;
+    margin-top: 2rem;
+  }
+ 
+}
+
+@media screen and (max-width: 1024px) {
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+}
