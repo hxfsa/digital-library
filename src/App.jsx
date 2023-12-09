@@ -14,6 +14,7 @@ import { BookDetails } from "./pages/BookDetails";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { useState } from "react";
+import { Admin } from "./pages/Admin";
 
 function App() {
   const [showNavbarAndFooter, setShowNavbarAndFooter] = useState(true);
@@ -28,7 +29,8 @@ function App() {
           <Route path="/collection" element={<Collection setShowNavbarAndFooter={setShowNavbarAndFooter} />} />
           <Route path="book/:id" element={<BookDetails setShowNavbarAndFooter={setShowNavbarAndFooter} />} />
           <Route path="*" element={<NotFound setShowNavbarAndFooter={setShowNavbarAndFooter}/>} />
-          <Route path="login" element={<Login setShowNavbarAndFooter={setShowNavbarAndFooter}/>} />
+          <Route path="/login" element={<Login setShowNavbarAndFooter={setShowNavbarAndFooter}/>} />
+          <Route path="/admin" element={<Admin setShowNavbarAndFooter={setShowNavbarAndFooter}/>} />
 
           {/* <Route path="/login" element={<Login />} /> */}
         </Routes>

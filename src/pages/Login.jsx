@@ -5,9 +5,9 @@ export const Login = ({ setShowNavbarAndFooter }) => {
     setShowNavbarAndFooter(false);
   }, []);
   return (
-    <div className="login bg-primaryDark flex justify-center">
-      <div className="loginContainer bg-primaryLight w-1/2 flex items-center justify-around rounded-lg">
-        <img src={books} alt="" className="w-1/4" />
+    <div className="login bg-primaryDark flex justify-center h-screen items-center">
+      <div className="loginContainer bg-primaryLight w-1/2 flex items-center justify-around rounded-lg h-3/4">
+        <img src={books} alt="" className="w-1/3" />
         <div className="loginForm w-1/2 flex flex-col justify-center items-center">
           <div className="loginText flex flex-col items-center">
             <h1 className="text-xl">Welcome Back Queen!</h1>

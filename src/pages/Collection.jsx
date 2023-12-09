@@ -47,7 +47,7 @@ export const Collection = ( { setShowNavbarAndFooter}) => {
       </div>
       <div className="books flex justify-around mt-16">
         {books.map((book) => (
-          <div className="book  ease-in hover:scale-110 transition duration-200 mb-20">
+          <div className="book ease-in hover:scale-110 transition duration-200 mb-20">
             <img src={book.image} alt={book.title} key={book.id} />
             <div className="bookInfos text-center	flex flex-col">
               <h1 className="font-bold"> {book.title}</h1>
