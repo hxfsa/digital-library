@@ -13,7 +13,7 @@ export const BookDetails = ( { setShowNavbarAndFooter }) => {
     setShowNavbarAndFooter(true);
   }, []);
   return (
-    <div className="bookDetails flex justify-center ">
+    <div className="bookDetails flex justify-center bg-primaryLight">
       <div className="bookDetailsContainer bg-white w-8/12 h-1/2 mb-52 flex flex-row">
         <div className="bookCover bg-white w-1/3 flex justify-center items-center">
           <img src={mdt} alt="le maître du temps " className="bookImg h-64   bg-white" />
@@ -54,10 +54,6 @@ export const BookDetails = ( { setShowNavbarAndFooter }) => {
               <tr>
                 <td>Publishing Year</td>
                 <td>2008</td>
-              </tr>
-              <tr>
-                <td>Language</td>
-                <td>French</td>
               </tr>
               <tr>
                 <td>Synopsis</td>

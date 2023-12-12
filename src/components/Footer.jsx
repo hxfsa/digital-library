@@ -23,7 +23,7 @@ export const Footer = () => {
       </div>
       <div className="social-medias flex items-center">
         {socialMedias.map((media) => (
-        <img src={media.icon} alt={media.media} />
+        <img src={media.icon} alt={media.media} key={media.id} />
         ))}
       </div>
     </footer>
