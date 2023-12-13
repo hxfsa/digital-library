@@ -7,40 +7,70 @@ import axios from "axios";
 //assets
 
 import kingdom from "../assets/images/kingdom.png";
+import { SearchSuggestions } from "../components/SearchSuggestions";
 
 export const Home = ({ setShowNavbarAndFooter }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [fetchedBook, setFetchedBook] = useState({});
-  const [fetchedDescriptionAndImage, setFetchedDescriptionAndImage] = useState(
-    {}
-  );
+  const [book, setBook] = useState({});
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     setShowNavbarAndFooter(true);
+    console.log(suggestions, "useeffect suggestions");
+    getBookInfos();
   }, []);
 
   //fetch api
 
-  const api = `https://openlibrary.org/search.json?q=${searchValue}&limit=6`;
+  const api = `https://openlibrary.org/search.json?title=${searchValue}&limit=6`;
 
-  //test
   //key = id (ol45804w)
-  const descAndImgApi = `https://openlibrary.org${fetchedBook.key}.json`;
 
   const bookSearching = (e) => {
     setSearchValue(e.target.value);
+    getBookInfos();
   };
 
-//fetch all informations i need from two urls
-  async function handleFetchBook() {
-    const response = axios.get(api);
-    const data = (await response).data.docs[0];
-    setFetchedBook(data);
-    console.log(data);
-    const secondRes = axios.get(descAndImgApi);
-    const secondData = await secondRes;
-    setFetchedDescriptionAndImage(secondData)
+  //fetch all informations i need from two urls
+
+  //Home component needs only getBookInfos
+  async function getBookInfos() {
+    if (searchValue.length >= 2 && searchValue !== "") {
+      await axios.get(api).then(async (response) => {
+        const books = response.data.docs;
+        console.log(books, "books doivent apparaître au bout de trois lettres");
+        const suggestions = books.map((book) => {
+          return {
+            title: book.title,
+            author: book.author_name,
+            cover: book.cover_i,
+            date: book.publish_year,
+            key: book.key,
+          };
+        });
+        setSuggestions([...suggestions]);
+        console.log(
+          suggestions,
+          "suggestions doivent apparaître au bout de 3 lettres"
+        );
+      });
+    } else {
+      setSuggestions([])
+    }
   }
+
+  //TODO : create suggestions state to store books fetched then pass suggestions to SearchSuggestions props
+
+  // const getBookDescription = async (key) => {
+  //   await axios.get(`https://openlibrary.org${key}.json`).then((response) => {
+  //     // console.log(response, "desc and img");
+  //     const { covers, description } = response.data;
+  //     return {
+  //       description: description.value,
+  //       cover: covers[0],
+  //     }
+  //   });
+  // };
 
   //author : fetchedBook.author_name((((([0])))))
   //date : fetchedBook.publish_year[0]
@@ -57,8 +87,12 @@ export const Home = ({ setShowNavbarAndFooter }) => {
           <SearchBar
             searchValue={searchValue}
             bookSearching={bookSearching}
-            handleFetchBook={handleFetchBook}
+            handleFetchBook={() => getBookInfos()}
           />
+          {searchValue !== "" && <SearchSuggestions
+            searchValue={searchValue}
+            suggestions={suggestions}
+          />}
         </div>
         <img src={kingdom} alt="kingdom" className="pb-12" />
       </div>

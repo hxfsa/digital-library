@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home setShowNavbarAndFooter={setShowNavbarAndFooter}  />} />
           <Route path="/collection" element={<Collection setShowNavbarAndFooter={setShowNavbarAndFooter} />} />
-          <Route path="book/:id" element={<BookDetails setShowNavbarAndFooter={setShowNavbarAndFooter} />} />
+          <Route path="/:key" element={<BookDetails setShowNavbarAndFooter={setShowNavbarAndFooter} />} />
           <Route path="*" element={<NotFound setShowNavbarAndFooter={setShowNavbarAndFooter}/>} />
           <Route path="/login" element={<Login setShowNavbarAndFooter={setShowNavbarAndFooter}/>} />
           <Route path="/admin" element={<Admin setShowNavbarAndFooter={setShowNavbarAndFooter}/>} />
