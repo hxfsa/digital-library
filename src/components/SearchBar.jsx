@@ -14,9 +14,9 @@ export const SearchBar = ( { searchValue, bookSearching, handleFetchBook } ) => 
         onChange={bookSearching}
         
       />
-      <button className="searchBtn bg-primaryDark h-16 w-16 flex items-center justify-center rounded-r-md" onClick={handleFetchBook}>
+      {/* <button className="searchBtn bg-primaryDark h-16 w-16 flex items-center justify-center rounded-r-md" onClick={handleFetchBook}>
         <img src={search} alt="search button" className="h-8 bg-primaryDark" />
-      </button>
+      </button> */}
     </div>
   );
 };
