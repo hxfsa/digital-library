@@ -9,11 +9,10 @@ export const SearchSuggestions = ({ suggestions }) => {
     <div className="bg-white w-80 mt-2 rounded-lg border-primaryDark border-2 border-blur">
       <ul>
         {suggestions.map((suggestion) => {
-          console.log(suggestion);
           const id = suggestion.key.substring(7, 15);
-          console.log(id);
+          console.log(id, "voici l'id après le surbstring pour recup seulement le num qui devrait être OL82586W ");
           return (
-            <Link to={`/book/${id}`} key={suggestion.key}>
+            <Link to={`/${id}`} key={suggestion.key}>
               {/* <li key={suggestion.key}>{suggestion.title}</li> */}
               <li>
                 {suggestion.title.length > 39

@@ -1,9 +1,9 @@
 import React from "react";
 
 //components
-import { SearchBar } from "../components/SearchBar";
+import { SearchBar } from "./SearchBar";
 
-export const AdminContainer = () => {
+export const DashboardContainer = () => {
   return (
     <div className="adminContainer bg-primaryLight mt-28 w-full ">
       <h1>DASHBOARD</h1>

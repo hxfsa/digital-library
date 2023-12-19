@@ -11,18 +11,16 @@ import { SearchSuggestions } from "../components/SearchSuggestions";
 
 export const Home = ({ setShowNavbarAndFooter }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [book, setBook] = useState({});
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     setShowNavbarAndFooter(true);
-    console.log(suggestions, "useeffect suggestions");
     getBookInfos();
   }, []);
 
   //fetch api
 
-  const api = `https://openlibrary.org/search.json?title=${searchValue}&limit=6`;
+  const api = `https://openlibrary.org/search.json?title=${searchValue}&fields=*&limit=6&jscmd=details`;
 
   //key = id (ol45804w)
 
@@ -38,7 +36,7 @@ export const Home = ({ setShowNavbarAndFooter }) => {
     if (searchValue.length >= 2 && searchValue !== "") {
       await axios.get(api).then(async (response) => {
         const books = response.data.docs;
-        console.log(books, "books doivent apparaître au bout de trois lettres");
+        console.log(books, "books fetched");
         const suggestions = books.map((book) => {
           return {
             title: book.title,
@@ -48,16 +46,13 @@ export const Home = ({ setShowNavbarAndFooter }) => {
             key: book.key,
           };
         });
-        setSuggestions([...suggestions]);
-        console.log(
-          suggestions,
-          "suggestions doivent apparaître au bout de 3 lettres"
-        );
+        setSuggestions(suggestions);
       });
     } else {
       setSuggestions([])
     }
   }
+
 
   //TODO : create suggestions state to store books fetched then pass suggestions to SearchSuggestions props
 

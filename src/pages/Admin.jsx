@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 //assets
 import logoAdmin from "../assets/logos/logo-admin.png";
 import off from "../assets/icons/off.svg";
-import { AdminContainer } from "../components/AdminContainer";
+import { DashboardContainer } from "../components/DashboardContainer";
 export const Admin = ({ setShowNavbarAndFooter }) => {
   useEffect(() => {
     setShowNavbarAndFooter(false);
@@ -13,7 +13,9 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
     <div className="admin bg-primaryDark h-screen flex">
       <div className="adminMenu bg-primaryDark w-1/5 flex flex-col items-center">
         <div className="adminLogo w-24 bg-primaryDark">
+          <Link to="/">
           <img src={logoAdmin} alt="logo" className=" mb-24" />
+          </Link>
         </div>
         <div className="menuSection flex flex-col bg-primaryDark">
           <span>Dashboard</span>
@@ -27,7 +29,7 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
           </Link>
         </div>
       </div>
-      <AdminContainer />
+      <DashboardContainer />
     </div>
   );
 };

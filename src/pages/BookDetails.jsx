@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -10,42 +10,35 @@ import twitter from "../assets/icons/twitter.svg";
 import whatsapp from "../assets/icons/whatsapp.svg";
 import heart from "../assets/icons/heart.svg";
 
-export const BookDetails = ({ setShowNavbarAndFooter, fetchedBook }) => {
-  const { key } = useParams();
+export const BookDetails = ({ setShowNavbarAndFooter }) => {
+  const [fetchedBook, setFetchedBook] = useState([]);
+  const { id } = useParams();
   useEffect(() => {
     setShowNavbarAndFooter(true);
-    getBookDescription(key);
+    getBookDescription(id);
   }, []);
-  useEffect(() => {
-    const getBookDescription = async (key) => {
-      await axios
-        .get(`https://openlibrary.org/works/${key.toUpperCase()}.json`)
-        .then((response) => {
-          console.log(response);
-          const { covers, description } = response.data;
-          return {
-            description: description.value,
-            cover: covers[0],
-          };
-        });
-    };
-  }, []);
-  
+  const getBookDescription = async (id) => {
+    // console.log(id, "key dans books details qui est sensé être seulement l'id");
+    await axios
+      .get(`https://openlibrary.org/works/${id.toUpperCase()}.json`)
+      .then((response) => {
+        setFetchedBook(response.data);
+      });
+  };
   return (
     <div className="bookDetails flex justify-center bg-primaryLight">
       <div className="bookDetailsContainer bg-white w-8/12 h-1/2 mb-52 flex flex-row">
         <div className="bookCover bg-white w-1/3 flex justify-center items-center">
           <img
-            src={mdt}
+            src={`https://covers.openlibrary.org/b/id/${fetchedBook.covers ? fetchedBook.covers[0] : ""}.jpg`}
+
             alt="le maître du temps "
             className="bookImg h-64   bg-white"
           />
         </div>
         <div className="infos bg-white w-8/12">
           <div className="title bg-white p-4 ">
-            <h1 className="text-3xl font-semibold bg-white">
-              Le Maître du Temps
-            </h1>
+            <h1 className="text-3xl font-semibold bg-white"></h1>
           </div>
           <div className="shareWish flex justify-between bg-white pb-8">
             <div className="share flex">
@@ -74,7 +67,7 @@ export const BookDetails = ({ setShowNavbarAndFooter, fetchedBook }) => {
             <tbody>
               <tr>
                 <td>Author(s)</td>
-                <td className="underline text-primaryDark">JK R OLWING</td>
+                <td className="underline text-primaryDark">JK ROLWING</td>
               </tr>
               <tr>
                 <td>Publishing Year</td>
@@ -83,14 +76,8 @@ export const BookDetails = ({ setShowNavbarAndFooter, fetchedBook }) => {
               <tr>
                 <td>Synopsis</td>
                 <td>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Distinctio non aperiam iusto nostrum atque repellat, modi
-                  vitae, numquam aliquid officia, eveniet vel ullam explicabo.
-                  Distinctio corporis nihil illo iure eum Lorem, ipsum dolor sit
-                  amet consectetur adipisicing elit. Harum eum non, facilis
-                  laudantium aperiam provident qui impedit officiis eaque nulla
-                  error corrupti tempora repellendus, at maiores consequuntur
-                  voluptas iste doloribus?
+                  test
+                  {/* {fetchedBook.description} */}
                 </td>
               </tr>
             </tbody>
