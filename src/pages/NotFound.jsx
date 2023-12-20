@@ -7,7 +7,7 @@ export const NotFound = ( { setShowNavbarAndFooter}) => {
     setShowNavbarAndFooter(false);
   }, []);
   return (
-    <div className="notFound flex flex-col items-center bg-white">
+    <div className="notFound flex flex-col items-center bg-white h-screen justify-center">
       <img src={notFound} alt="404 image" className="" />
       <Link to="/">
         <button className="border px-8 py-4 rounded-lg bg-primaryDark text-white font-semibold hover:bg-white hover:text-primaryDark hover:border-primaryDark">

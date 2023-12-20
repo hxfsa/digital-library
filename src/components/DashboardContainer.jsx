@@ -5,39 +5,54 @@ import { SearchBar } from "./SearchBar";
 
 export const DashboardContainer = () => {
   return (
-    <div className="adminContainer bg-primaryLight mt-28 w-full ">
-      <h1>DASHBOARD</h1>
-      <div className="manageContentContainer bg-white">
-        <SearchBar />
-        <div className="adminTable bg-white">
-          <table>
-            <thead>
+    <div className="adminContainer flex flex-col items-center h-full">
+      <h1 className="text-2xl font-semibold text-primaryDark w-full pl-28 my-6">
+        DASHBOARD
+      </h1>
+
+      <div className="manageContentContainer bg-white w-8/12 rounded-lg h-3/4 overflow-scroll ">
+        <div className="searchBarAdmin m-6">
+          <SearchBar />
+        </div>
+        <div className="adminTable">
+          <table className="w-full">
+            <thead className="bg-primaryDark text-white font-light">
               <tr>
-                <th className="bg-white">ID</th>
-                <th className="bg-white">Title</th>
-                <th className="bg-white">Author</th>
+                <th className="py-3 font-semibold">ID</th>
+                <th className="font-semibold">Title</th>
+                <th className="font-semibold">Author(s)</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th className="bg-white">1</th>
-                <th className="bg-white">Harry Potter and the</th>
-                <th className="bg-white">J.K Rowling</th>
+              <tr >
+                <th className="py-4 font-normal">1</th>
+                <th className="font-normal">Harry Potter and the Prisoner of Azkaban</th>
+                <th className=" font-normal">J.K Rowling</th>
               </tr>
-              <tr>
-                <th className="bg-white">1</th>
-                <th className="bg-white">Harry Potter and the</th>
-                <th className="bg-white">J.K Rowling</th>
+              <tr className="border-2">
+                <th className="py-4 font-normal">1</th>
+                <th className="font-normal">Harry Potter and the Prisoner of Azkaban</th>
+                <th className="font-normal">J.K Rowling</th>
               </tr>
-              <tr>
-                <th className="bg-white">1</th>
-                <th className="bg-white">Harry Potter and the</th>
-                <th className="bg-white">J.K Rowling</th>
+              <tr className="border-2">
+                <th className="py-4 font-normal">1</th>
+                <th className="font-normal">Harry Potter and the Prisoner of Azkaban</th>
+                <th className="font-normal">J.K Rowling</th>
               </tr>
-              <tr>
-                <th className="bg-white">1</th>
-                <th className="bg-white">Harry Potter and the</th>
-                <th className="bg-white">J.K Rowling</th>
+              <tr className="border-2">
+                <th className="py-4 font-normal">1</th>
+                <th className="font-normal">Harry Potter and the Prisoner of Azkaban</th>
+                <th className="font-normal">J.K Rowling</th>
+              </tr>
+              <tr className="border-2">
+                <th className="py-4 font-normal">1</th>
+                <th className="font-normal">Harry Potter and the Prisoner of Azkaban</th>
+                <th className="font-normal">J.K Rowling</th>
+              </tr>
+              <tr className="border-2">
+                <th className="py-4 font-normal">1</th>
+                <th className="font-normal">Harry Potter and the Prisoner of Azkaban</th>
+                <th className="font-normal">J.K Rowling</th>
               </tr>
             </tbody>
           </table>

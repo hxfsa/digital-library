@@ -12,7 +12,7 @@ export const SearchSuggestions = ({ suggestions }) => {
           const id = suggestion.key.substring(7, 15);
           console.log(id, "voici l'id après le surbstring pour recup seulement le num qui devrait être OL82586W ");
           return (
-            <Link to={`/${id}`} key={suggestion.key}>
+            <Link to={`/book/${id}`} key={suggestion.key}>
               {/* <li key={suggestion.key}>{suggestion.title}</li> */}
               <li>
                 {suggestion.title.length > 39

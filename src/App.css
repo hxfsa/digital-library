@@ -59,7 +59,7 @@ input:focus {
 
 
 /* ADMIN */
-.menuSection > span {
+.menuSection > ul > button> li {
   background-color: #9837A3;
   font-size: x-large;
   color: white;
@@ -71,7 +71,7 @@ input:focus {
   cursor: pointer;
 
 }
-.menuSection > span:hover {
+.menuSection > ul > button >li:hover {
   background-color: #F4F2F2 ;
   color: #9837A3;
   border-radius:10px;
