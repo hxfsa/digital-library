@@ -29,14 +29,13 @@ export const Home = ({ setShowNavbarAndFooter }) => {
     getBookInfos();
   };
 
-  //fetch all informations i need from two urls
+  //fetch all informations i need from two apis
 
   //Home component needs only getBookInfos
   async function getBookInfos() {
     if (searchValue.length >= 2 && searchValue !== "") {
       await axios.get(api).then(async (response) => {
         const books = response.data.docs;
-        console.log(books, "books fetched");
         const suggestions = books.map((book) => {
           return {
             title: book.title,
@@ -53,24 +52,6 @@ export const Home = ({ setShowNavbarAndFooter }) => {
     }
   }
 
-
-  //TODO : create suggestions state to store books fetched then pass suggestions to SearchSuggestions props
-
-  // const getBookDescription = async (key) => {
-  //   await axios.get(`https://openlibrary.org${key}.json`).then((response) => {
-  //     // console.log(response, "desc and img");
-  //     const { covers, description } = response.data;
-  //     return {
-  //       description: description.value,
-  //       cover: covers[0],
-  //     }
-  //   });
-  // };
-
-  //author : fetchedBook.author_name((((([0])))))
-  //date : fetchedBook.publish_year[0]
-  //author array in first fetch, date in publish year array first element, description in second fetch
-  // image https://covers.openlibrary.org/b/id/7984916-L.jpg replace the number with covers in the second fetch
   return (
     <div className="home bg-primaryLight">
       <div className="section flex justify-around pt-16 bg-primaryLight">

@@ -107,13 +107,10 @@ export const Collection = ({ setShowNavbarAndFooter }) => {
     } else if (books.length - booksData.length === 0) {
       setBooksData(booksData);
     } else {
-      console.log(firstIndexOfTheNextFour, "has to be 8");
       let arrayOfAllNext = [];
       for (let i = firstIndexOfTheNextFour; i < books.length; i++) {
-        console.log(books[i], "has to display from titeuf to hafsa");
         arrayOfAllNext.push(books[i]);
       }
-      console.log(arrayOfAllNext);
       setBooksData([...booksData, ...arrayOfAllNext]);
       setButtonVisible(false);
     }

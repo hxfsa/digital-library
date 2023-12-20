@@ -18,7 +18,6 @@ export const BookDetails = ({ setShowNavbarAndFooter }) => {
     getBookDescription(id);
   }, []);
   const getBookDescription = async (id) => {
-    // console.log(id, "key dans books details qui est sensé être seulement l'id");
     await axios
       .get(`https://openlibrary.org/works/${id.toUpperCase()}.json`)
       .then((response) => {
