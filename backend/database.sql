@@ -22,7 +22,7 @@ CREATE TABLE
             NULL
     ) ENGINE = INNODB DEFAULT CHARSET = UTF8MB4;
 
-    DROP TABLE IF EXISTS `fetched_book`;
+DROP TABLE IF EXISTS `fetched_book`;
 
 CREATE TABLE
     `fetched_book` (
@@ -41,7 +41,12 @@ CREATE TABLE
 
 -- _____________________________________________ POPULATE TABLES _____________________________________________
 
--- Create games
+-- Create admin
+INSERT INTO
+    `admin` (`email`, `password`)
+VALUES ("test", "test");
+
+-- Create books
 INSERT INTO
     `book` (
         `title`,
@@ -51,62 +56,62 @@ INSERT INTO
     )
 VALUES (
         "Harry Potter à l'école des sorciers",
-        'J.K Rowling',
-        '../assets/images/hp1.jpg'
+        "J.K Rowling",
+        "../assets/images/hp1.jpg",
         1
     ), (
         "Harry Potter et la Chambre des Secrets",
-        'J.K Rowling',
+        "J.K Rowling",
         "../assets/images/hp2.png",
         1
     ), (
         "Harry Potter et le Prisonnier d'Azkaban",
-        'J.K Rowling',
+        "J.K Rowling",
         "../assets/images/hp3.jpg",
         1
     ), (
         "Harry Potter et la Coupe de Feu",
-        'J.K Rowling',
+        "J.K Rowling",
         "../assets/images/hp4.jpg",
         1
     ), (
         "Harry Potter et l'Ordre du Phénix",
-        'J.K Rowling',
+        "J.K Rowling",
         "../assets/images/hp5.jpg",
         1
     ), (
         "Harry Potter et le Prince de Sang-Mêlé",
-        'J.K Rowling',
+        "J.K Rowling",
         "../assets/images/hp6.jpg",
         1
     ), (
         "Harry Potter et les Reliques de la Mort",
-        'J.K Rowling',
+        "J.K Rowling",
         "../assets/images/hp7.jpg",
         1
     ), (
         "Harry Potter et l'Enfant Maudit",
-        'J.K Rowling',
+        "J.K Rowling",
         "../assets/images/hp8.jpg",
         1
     ), (
         "L'appel du Coucou",
-        'Robert Galbraith',
+        "Robert Galbraith",
         "../assets/images/adcc.png",
         1
     ), (
         "Le Monde de Narnia",
-        'C.S Lewis',
+        "C.S Lewis",
         "../assets/images/narnia.png",
         1
     ), (
         "Progresser à pas de géant",
-        'Anthony Robbins',
+        "Anthony Robbins",
         "../assets/images/papdg.jpg",
         1
     ), (
-        'Comment je suis devenue rentière en 4 ans',
-        'Elise Franck',
-        '../assets/images/rentiere.jpg',
+        "Comment je suis devenue rentière en 4 ans",
+        "Elise Franck",
+        "../assets/images/rentiere.jpg",
         1
     );

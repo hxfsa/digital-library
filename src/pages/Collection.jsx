@@ -66,21 +66,21 @@ export const Collection = ({ setShowNavbarAndFooter }) => {
     {
       id: 9,
       title: "Titeuf",
-      author: "jsp",
+      author: "zep",
       image:
         "https://m.media-amazon.com/images/I/81jS3gh8+IL._AC_UF894,1000_QL80_.jpg",
     },
     {
       id: 10,
-      title: "HAFSA",
-      author: "jsp",
+      title: "teufti",
+      author: "zep",
       image:
         "https://m.media-amazon.com/images/I/81jS3gh8+IL._AC_UF894,1000_QL80_.jpg",
     },
     {
       id: 11,
-      title: "HAHAHAHAHAH",
-      author: "jsp",
+      title: "titouf",
+      author: "zep",
       image:
         "https://m.media-amazon.com/images/I/81jS3gh8+IL._AC_UF894,1000_QL80_.jpg",
     },

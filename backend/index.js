@@ -1,11 +1,14 @@
 require("dotenv").config();
 
+
 const cors = require("cors");
 const express = require("express");
 const app = express();
+const router = require("./routers/router.js");
 
 app.use(cors());
 app.use(express.json());
+app.use(router);
 
 app.get("/", (req, res) => {
   res.send("cc voici la page d'accueil");
@@ -20,3 +23,4 @@ app.listen(PORT, (err) => {
     console.log(`Running on port ${PORT}`);
   }
 });
+

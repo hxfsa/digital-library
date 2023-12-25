@@ -26,7 +26,7 @@ export const WishListContainer = () => {
                 <th className="py-3 font-semibold">ID</th>
                 <th className="font-semibold">Title</th>
                 <th className="font-semibold">Author(s)</th>
-                <th className="font-semibold">Unfavorite</th>
+                <th className="font-semibold">Unwish</th>
               </tr>
             </thead>
             <tbody>
