@@ -14,7 +14,7 @@ router.delete("/books/:id", BookController.deleteBook);
 
 //fetched books routes
 
-// router.get("/wishedbooks", WishedBookController.getAllWishedBooks);
-// router.delete("/wishedbooks/:id", WishedBookController.unwishBook);
+router.get("/wishedbooks", WishedBookController.getAllWishedBooks);
+router.delete("/wishedbooks/:id", WishedBookController.unwishBook);
 
 module.exports = router;
