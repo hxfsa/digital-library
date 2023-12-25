@@ -5,9 +5,13 @@ const selectAllBooks = () => {
   return db.query(SQL);
 };
 
+const addBook = ({ title, author, cover_image }) => {
+  const SQL = "INSERT INTO book (title, author, cover_image) VALUES (?, ?, ?)";
+  return db.query(SQL, [title, author, cover_image]);
+};
 const updateBook = ({ title, author, cover_image, id }) => {
   const SQL =
-    "UPDATE book SET title = ?, author = ?, cover_image = ? * FROM book WHERE id = ?";
+    "UPDATE book SET title = ?, author = ?, cover_image = ? WHERE id = ?";
   return db.query(SQL, [title, author, cover_image, id]);
 };
 
@@ -16,4 +20,4 @@ const deleteBookById = ({ id }) => {
   return db.query(SQL, [id]);
 };
 
-module.exports = { deleteBookById, selectAllBooks, updateBook };
+module.exports = { selectAllBooks, addBook, updateBook, deleteBookById };
