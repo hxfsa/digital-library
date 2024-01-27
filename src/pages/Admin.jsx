@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 //assets
 import logoAdmin from "../assets/logos/logo-admin.png";
@@ -11,6 +12,7 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
   const [isDashboardActive, setIsDashboardActive] = useState(false);
   const [isManageBooksActive, setIsManageBooksActive] = useState(false);
   const [isWishListActive, setIsWishListActive] = useState(false);
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
     setShowNavbarAndFooter(false);
@@ -34,6 +36,16 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
     setIsManageBooksActive(false);
     setIsWishListActive(true);
   };
+
+  const url = `http://localhost:5500/books`;
+
+  useEffect(() => {
+    axios.get(url).then((response) => {
+      const fetchedData = response.data;
+      setBooks(fetchedData);
+    });
+  }, []);
+
   return (
     <div className="admin bg-primaryDark h-screen flex">
       <div className="adminMenu bg-primaryDark w-1/5 flex flex-col items-center">
@@ -50,9 +62,7 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
             <button onClick={handleManageBooks}>
               <li>Manage books</li>
             </button>
-            <button
-             onClick={handleWishList}
-             >
+            <button onClick={handleWishList}>
               <li>Wish List</li>
             </button>
             <li>
@@ -71,10 +81,9 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
         </div>
       </div>
       <div className="adminTable bg-primaryLight mt-28 w-full">
-        {isDashboardActive && <DashboardContainer />}
-
-        {isManageBooksActive && <ManageBooksContainer />}
-        {isWishListActive && <WishListContainer />}
+        {isDashboardActive && <DashboardContainer books={books} />}
+        {isManageBooksActive && <ManageBooksContainer books={books} />}
+        {isWishListActive && <WishListContainer books={books}/>}
       </div>
     </div>
   );

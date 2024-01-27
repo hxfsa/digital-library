@@ -6,7 +6,7 @@ import { SearchBar } from "./SearchBar";
 //assets
 import brokenheart from "../assets/icons/broken-heart.svg";
 
-export const WishListContainer = () => {
+export const WishListContainer = ({ books }) => {
   return (
     <div className="adminContainer flex flex-col items-center h-full">
       <h1 className="text-2xl font-semibold text-primaryDark w-full pl-28 my-6">
@@ -30,102 +30,22 @@ export const WishListContainer = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className=" font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img
-                      src={brokenheart}
-                      alt="broken-heart icon"
-                      className="h-6"
-                    />
-                  </button>
-                </th>
-              </tr>
-              <tr className="border-2">
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className="font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img
-                      src={brokenheart}
-                      alt="broken-heart icon"
-                      className="h-6"
-                    />
-                  </button>
-                </th>
-              </tr>
-              <tr className="border-2">
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className="font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img
-                      src={brokenheart}
-                      alt="broken-heart icon"
-                      className="h-6"
-                    />
-                  </button>
-                </th>
-              </tr>
-              <tr className="border-2">
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className="font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img
-                      src={brokenheart}
-                      alt="broken-heart icon"
-                      className="h-6"
-                    />
-                  </button>
-                </th>
-              </tr>
-              <tr className="border-2">
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className="font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img
-                      src={brokenheart}
-                      alt="broken-heart icon"
-                      className="h-6"
-                    />
-                  </button>
-                </th>
-              </tr>
-              <tr className="border-2">
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className="font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img
-                      src={brokenheart}
-                      alt="broken-heart icon"
-                      className="h-6"
-                    />
-                  </button>
-                </th>
-              </tr>
+              {books.map((book) => (
+                <tr key={book.id} className="border">
+                  <th className="py-4 font-normal">{book.id}</th>
+                  <th className="font-normal">{book.title}</th>
+                  <th className=" font-normal">{book.author}</th>
+                  <th className="flex justify-center gap-4 pt-6">
+                    <button>
+                      <img
+                        src={brokenheart}
+                        alt="broken-heart icon"
+                        className="h-6"
+                      />
+                    </button>
+                  </th>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

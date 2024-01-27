@@ -7,7 +7,7 @@ import { SearchBar } from "./SearchBar";
 import pencil from "../assets/icons/pencil.svg";
 import bin from "../assets/icons/bin.svg";
 
-export const ManageBooksContainer = () => {
+export const ManageBooksContainer = ({ books }) => {
   return (
     <div className="adminContainer flex flex-col items-center h-full">
       <h1 className="text-2xl font-semibold text-primaryDark w-full pl-28 my-6">
@@ -34,96 +34,21 @@ export const ManageBooksContainer = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className=" font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img src={pencil} alt="pencil icon" className="h-4" />
-                  </button>
-                  <button>
-                    <img src={bin} alt="bin icon" className="h-4" />
-                  </button>
-                </th>
-              </tr>
-              <tr className="border-2">
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className="font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img src={pencil} alt="pencil icon" className="h-4" />
-                  </button>
-                  <button>
-                    <img src={bin} alt="bin icon" className="h-4" />
-                  </button>
-                </th>
-              </tr>
-              <tr className="border-2">
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className="font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img src={pencil} alt="pencil icon" className="h-4" />
-                  </button>
-                  <button>
-                    <img src={bin} alt="bin icon" className="h-4" />
-                  </button>
-                </th>
-              </tr>
-              <tr className="border-2">
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className="font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img src={pencil} alt="pencil icon" className="h-4" />
-                  </button>
-                  <button>
-                    <img src={bin} alt="bin icon" className="h-4" />
-                  </button>
-                </th>
-              </tr>
-              <tr className="border-2">
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className="font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img src={pencil} alt="pencil icon" className="h-4" />
-                  </button>
-                  <button>
-                    <img src={bin} alt="bin icon" className="h-4" />
-                  </button>
-                </th>
-              </tr>
-              <tr className="border-2">
-                <th className="py-4 font-normal">1</th>
-                <th className="font-normal">
-                  Harry Potter and the Prisoner of Azkaban
-                </th>
-                <th className="font-normal">J.K Rowling</th>
-                <th className="flex justify-center gap-4 pt-6">
-                  <button>
-                    <img src={pencil} alt="pencil icon" className="h-4" />
-                  </button>
-                  <button>
-                    <img src={bin} alt="bin icon" className="h-4" />
-                  </button>
-                </th>
-              </tr>
+              {books.map((book) => (
+                <tr key={book.id} className="border">
+                  <th className="py-4 font-normal">{book.id}</th>
+                  <th className="font-normal">{book.title}</th>
+                  <th className=" font-normal">{book.author}</th>
+                  <th className="flex justify-center gap-4 pt-6">
+                    <button>
+                      <img src={pencil} alt="pencil icon" className="h-4" />
+                    </button>
+                    <button>
+                      <img src={bin} alt="bin icon" className="h-4" />
+                    </button>
+                  </th>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
