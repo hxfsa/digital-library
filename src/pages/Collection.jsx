@@ -9,6 +9,8 @@ export const Collection = ({ setShowNavbarAndFooter }) => {
   const [displayedBooks, setDisplayedBooks] = useState([]);
   const [booksData, setBooksData] = useState([]);
   const [buttonVisible, setButtonVisible] = useState(true);
+  const [searchValue, setSearchValue] = useState("");
+
   // //get the first index and the fourth to display 4 books by 4
   const firstElementOfTheNextFour = booksData[displayedBooks.length];
   const lastElementOfTheNextFour = booksData[displayedBooks.length + 4];
@@ -18,12 +20,14 @@ export const Collection = ({ setShowNavbarAndFooter }) => {
     firstIndexOfTheNextFour,
     lastIndexOfTheNextFour
   );
+
   const url = `http://localhost:5500/books`;
 
   useEffect(() => {
     axios.get(url).then((response) => {
       const books = response.data;
       setBooksData(books);
+      setDisplayedBooks(books);
       let booksFirstPart = books.slice(0, 4);
       setDisplayedBooks(booksFirstPart);
     });
@@ -45,10 +49,31 @@ export const Collection = ({ setShowNavbarAndFooter }) => {
     }
   };
 
+  const handleSearchBook = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearchValue(value);
+  };
+
+  useEffect(() => {
+    if (searchValue !== "") {
+      const filter = booksData.filter(
+        (book) =>
+          book.title.toLowerCase().includes(searchValue) ||
+          book.author.toLowerCase().includes(searchValue)
+      );
+      setDisplayedBooks(filter);
+      setButtonVisible(false);
+    } else {
+      setDisplayedBooks(booksData.slice(0, 4));
+      setButtonVisible(true);
+    }
+  }, [searchValue]);
+
+ 
   return (
     <div className="collection bg-primaryLight">
       <div className="search flex justify-end mr-14 pt-8 bg-primaryLight">
-        <SearchBar />
+        <SearchBar searchValue={searchValue} bookSearching={handleSearchBook} />
       </div>
       <div className="books flex mt-16 bg-primaryLight">
         {displayedBooks.map((book) => (

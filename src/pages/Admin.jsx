@@ -53,10 +53,9 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
   const filterBooks = (e) => {
     const value = e.target.value;
     setSearchValue(value);
-    fetchFilteredResults();
   };
-
-  const fetchFilteredResults = () => {
+  
+  useEffect(() => {
     if (searchValue !== "") {
       const filteredBooks = books.filter(
         (book) =>
@@ -67,8 +66,8 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
     } else {
       setDisplayedBooks(books);
     }
-  };
-  //filtre à revoir
+  }, [searchValue])
+
 
   return (
     <div className="admin bg-primaryDark h-screen flex">
