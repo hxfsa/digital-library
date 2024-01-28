@@ -2,7 +2,7 @@ import React from "react";
 
 import search from "../assets/icons/search.svg";
 
-export const SearchBar = ({ searchValue, bookSearching, handleFetchBook }) => {
+export const SearchBar = ({ searchValue, bookSearching }) => {
   return (
     <div className="searchbar flex">
       <input

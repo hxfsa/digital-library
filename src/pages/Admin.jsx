@@ -8,11 +8,14 @@ import off from "../assets/icons/off.svg";
 import { DashboardContainer } from "../components/DashboardContainer";
 import { ManageBooksContainer } from "../components/ManageBooksContainer";
 import { WishListContainer } from "../components/WishListContainer";
+
 export const Admin = ({ setShowNavbarAndFooter }) => {
   const [isDashboardActive, setIsDashboardActive] = useState(false);
   const [isManageBooksActive, setIsManageBooksActive] = useState(false);
   const [isWishListActive, setIsWishListActive] = useState(false);
   const [books, setBooks] = useState([]);
+  const [displayedBooks, setDisplayedBooks] = useState(books);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     setShowNavbarAndFooter(false);
@@ -43,8 +46,29 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
     axios.get(url).then((response) => {
       const fetchedData = response.data;
       setBooks(fetchedData);
+      setDisplayedBooks(fetchedData);
     });
   }, []);
+
+  const filterBooks = (e) => {
+    const value = e.target.value;
+    setSearchValue(value);
+    fetchFilteredResults();
+  };
+
+  const fetchFilteredResults = () => {
+    if (searchValue !== "") {
+      const filteredBooks = books.filter(
+        (book) =>
+          book.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+          book.author.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      setDisplayedBooks(filteredBooks);
+    } else {
+      setDisplayedBooks(books);
+    }
+  };
+  //filtre à revoir
 
   return (
     <div className="admin bg-primaryDark h-screen flex">
@@ -81,9 +105,27 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
         </div>
       </div>
       <div className="adminTable bg-primaryLight mt-28 w-full">
-        {isDashboardActive && <DashboardContainer books={books} />}
-        {isManageBooksActive && <ManageBooksContainer books={books} />}
-        {isWishListActive && <WishListContainer books={books}/>}
+        {isDashboardActive && (
+          <DashboardContainer
+            books={displayedBooks}
+            dashboardBooksSearching={filterBooks}
+            dashboardSearchValue={searchValue}
+          />
+        )}
+        {isManageBooksActive && (
+          <ManageBooksContainer
+            books={displayedBooks}
+            manageBooksSearching={filterBooks}
+            manageSearchValue={searchValue}
+          />
+        )}
+        {isWishListActive && (
+          <WishListContainer
+            books={displayedBooks}
+            wishListSearching={filterBooks}
+            wishListSearchValue={searchValue}
+          />
+        )}
       </div>
     </div>
   );

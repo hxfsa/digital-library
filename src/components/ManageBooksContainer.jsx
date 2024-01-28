@@ -7,7 +7,7 @@ import { SearchBar } from "./SearchBar";
 import pencil from "../assets/icons/pencil.svg";
 import bin from "../assets/icons/bin.svg";
 
-export const ManageBooksContainer = ({ books }) => {
+export const ManageBooksContainer = ({ books, manageBooksSearching, manageSearchValue }) => {
   return (
     <div className="adminContainer flex flex-col items-center h-full">
       <h1 className="text-2xl font-semibold text-primaryDark w-full pl-28 my-6">
@@ -17,7 +17,10 @@ export const ManageBooksContainer = ({ books }) => {
       <div className="manageContentContainer bg-white w-8/12 rounded-lg h-3/4 overflow-scroll ">
         <header>
           <div className="searchBarAdmin m-6 flex justify-between">
-            <SearchBar />
+          <SearchBar
+            bookSearching={manageBooksSearching}
+            searchValue={manageSearchValue}
+          />
             <button className="bg-primaryDark text-white h-10 px-2 flex items-center rounded-xl hover:bg-white hover:text-primaryDark hover:border-2 hover:border-primaryDark">
               <span className="text-2xl pr-1">+</span> New Book
             </button>
