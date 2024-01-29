@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 //components
 import { SearchBar } from "./SearchBar";
@@ -7,7 +8,18 @@ import { SearchBar } from "./SearchBar";
 import pencil from "../assets/icons/pencil.svg";
 import bin from "../assets/icons/bin.svg";
 
-export const ManageBooksContainer = ({ books, manageBooksSearching, manageSearchValue }) => {
+export const ManageBooksContainer = ({
+  books,
+  manageBooksSearching,
+  manageSearchValue,
+}) => {
+  const [newBooks, setNewBooks] = useState(books);
+
+  const deleteBook = (id) => {
+    axios.delete(`http://localhost:5500/books/${id}`);
+    setNewBooks(newBooks.filter((book) => book.id != id));
+  };
+
   return (
     <div className="adminContainer flex flex-col items-center h-full">
       <h1 className="text-2xl font-semibold text-primaryDark w-full pl-28 my-6">
@@ -17,10 +29,10 @@ export const ManageBooksContainer = ({ books, manageBooksSearching, manageSearch
       <div className="manageContentContainer bg-white w-8/12 rounded-lg h-3/4 overflow-scroll ">
         <header>
           <div className="searchBarAdmin m-6 flex justify-between">
-          <SearchBar
-            bookSearching={manageBooksSearching}
-            searchValue={manageSearchValue}
-          />
+            <SearchBar
+              bookSearching={manageBooksSearching}
+              searchValue={manageSearchValue}
+            />
             <button className="bg-primaryDark text-white h-10 px-2 flex items-center rounded-xl hover:bg-white hover:text-primaryDark hover:border-2 hover:border-primaryDark">
               <span className="text-2xl pr-1">+</span> New Book
             </button>
@@ -37,7 +49,7 @@ export const ManageBooksContainer = ({ books, manageBooksSearching, manageSearch
               </tr>
             </thead>
             <tbody>
-              {books.map((book) => (
+              {newBooks.map((book) => (
                 <tr key={book.id} className="border">
                   <th className="py-4 font-normal">{book.id}</th>
                   <th className="font-normal">{book.title}</th>
@@ -46,7 +58,7 @@ export const ManageBooksContainer = ({ books, manageBooksSearching, manageSearch
                     <button>
                       <img src={pencil} alt="pencil icon" className="h-4" />
                     </button>
-                    <button>
+                    <button onClick={() => deleteBook(book.id)}>
                       <img src={bin} alt="bin icon" className="h-4" />
                     </button>
                   </th>

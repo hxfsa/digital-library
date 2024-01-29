@@ -81,7 +81,7 @@ export const Collection = ({ setShowNavbarAndFooter }) => {
             className="book ease-in hover:scale-110 transition duration-200 mb-20 bg-primaryLight"
             key={book.id}
           >
-            <img src={book.image} alt={book.title} className="bookImg h-80" />
+            <img src={book.cover_image} alt={book.title} className="bookImg h-80" />
             <div className="bookInfos text-center	flex flex-col">
               <h1 className="font-bold"> {book.title}</h1>
               <h2 className="font-semibold">{book.author}</h2>
