@@ -17,6 +17,7 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
   const [displayedBooks, setDisplayedBooks] = useState(books);
   const [searchValue, setSearchValue] = useState("");
 
+
   useEffect(() => {
     setShowNavbarAndFooter(false);
     setIsDashboardActive(true);
@@ -54,7 +55,7 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
     const value = e.target.value;
     setSearchValue(value);
   };
-  
+
   useEffect(() => {
     if (searchValue !== "") {
       const filteredBooks = books.filter(
@@ -66,9 +67,9 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
     } else {
       setDisplayedBooks(books);
     }
-  }, [searchValue])
+  }, [searchValue]);
 
-
+ 
   return (
     <div className="admin bg-primaryDark h-screen flex">
       <div className="adminMenu bg-primaryDark w-1/5 flex flex-col items-center">
@@ -103,6 +104,7 @@ export const Admin = ({ setShowNavbarAndFooter }) => {
           </ul>
         </div>
       </div>
+
       <div className="adminTable bg-primaryLight mt-28 w-full">
         {isDashboardActive && (
           <DashboardContainer

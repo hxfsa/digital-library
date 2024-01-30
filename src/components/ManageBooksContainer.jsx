@@ -7,6 +7,7 @@ import { SearchBar } from "./SearchBar";
 //assets
 import pencil from "../assets/icons/pencil.svg";
 import bin from "../assets/icons/bin.svg";
+import { NewBook } from "./NewBook";
 
 export const ManageBooksContainer = ({
   books,
@@ -14,6 +15,11 @@ export const ManageBooksContainer = ({
   manageSearchValue,
 }) => {
   const [newBooks, setNewBooks] = useState(books);
+  const [addingABook, setAddingABook] = useState(false);
+
+  const handleAddBook = () => {
+    setAddingABook(true);
+  };
 
   const deleteBook = (id) => {
     axios.delete(`http://localhost:5500/books/${id}`);
@@ -33,11 +39,15 @@ export const ManageBooksContainer = ({
               bookSearching={manageBooksSearching}
               searchValue={manageSearchValue}
             />
-            <button className="bg-primaryDark text-white h-10 px-2 flex items-center rounded-xl hover:bg-white hover:text-primaryDark hover:border-2 hover:border-primaryDark">
+            <button
+              onClick={handleAddBook}
+              className="bg-primaryDark text-white h-10 px-2 flex items-center rounded-xl hover:bg-white hover:text-primaryDark hover:border-2 hover:border-primaryDark"
+            >
               <span className="text-2xl pr-1">+</span> New Book
             </button>
           </div>
         </header>
+        {addingABook && <NewBook setAddingABook={setAddingABook} />}
         <div className="adminTable">
           <table className="w-full">
             <thead className="bg-primaryDark text-white font-light">
