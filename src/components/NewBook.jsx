@@ -1,26 +1,31 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-export const NewBook = ({
-  setAddingABook,
-}) => {
-  const [titleValue, setTitleValue] = useState("");
-  const [authorValue, setAuthorValue] = useState("");
-  const inputRef = useRef();
+export const NewBook = ({ setAddingABook }) => {
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [img, setImg] = useState("");
 
-  const handleAddTitle = (e) => {
-    const value = e.target.value;
-    setTitleValue(value);
-  };
-  const handleAddAuthor = (e) => {
-    const value = e.target.value;
-    setAuthorValue(value);
-  };
   const handleCloseModal = () => {
     setAddingABook(false);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    const fd = new FormData();
+
+    fd.append("title", title);
+    fd.append("author", author);
+    fd.append("cover_image", img);
+
+    axios
+      .post("http://localhost:5500/books", fd)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.error(err));
+    alert("file sent");
+  };
+  console.log(img);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -36,7 +41,7 @@ export const NewBook = ({
           <div className="flex items-center justify-between mx-4">
             <form
               enctype="multipart/form-data"
-            //   onSubmit={hSubmit}
+              onSubmit={handleSubmit}
               className="flex flex-col "
             >
               <label htmlFor="" className="text-gray-500 text-xl">
@@ -48,8 +53,9 @@ export const NewBook = ({
                 className="placeholder:italic bg-white pl-8 pr-28 py-4 rounded-md border-solid  border border-primaryDark"
                 autoFocus
                 required
-                value={titleValue}
-                onChange={handleAddTitle}
+                name="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
               />
               <label htmlFor="" className="text-gray-500 text-xl mr-2">
                 Author
@@ -59,13 +65,19 @@ export const NewBook = ({
                 placeholder="Author"
                 className="placeholder:italic bg-white pl-8 pr-28 py-4 rounded-md border-solid  border border-primaryDark"
                 required
-                value={authorValue}
-                onChange={handleAddAuthor}
+                name="author"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
               />{" "}
               <label htmlFor="" className="text-gray-500 text-xl mr-2">
                 Image
               </label>
-              <input type="file" name="monfichier" ref={inputRef} required />
+              <input
+                type="file"
+                name="cover_image"
+                required
+                onChange={(e) => setImg(e.target.files[0])}
+              />
               <div className="footer w-4/12 flex justify-around my-4">
                 <button
                   className=" px-3 bg-primaryDark rounded-lg text-white"

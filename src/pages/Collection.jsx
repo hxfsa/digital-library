@@ -33,6 +33,7 @@ export const Collection = ({ setShowNavbarAndFooter }) => {
     });
   }, []);
 
+
   const handleMoreBooks = () => {
     //si il reste 4 ou + livres qui n'ont pas encore été affichés alors je les affiche sinon j'affiche tous ceux qui restent
     if (booksData.length - displayedBooks.length >= 4) {
@@ -81,7 +82,7 @@ export const Collection = ({ setShowNavbarAndFooter }) => {
             className="book ease-in hover:scale-110 transition duration-200 mb-20 bg-primaryLight"
             key={book.id}
           >
-            <img src={book.cover_image} alt={book.title} className="bookImg h-80" />
+            <img src={`http://localhost:5500/${book.cover_image}`} alt={book.title} className="bookImg h-80" />
             <div className="bookInfos text-center	flex flex-col">
               <h1 className="font-bold"> {book.title}</h1>
               <h2 className="font-semibold">{book.author}</h2>

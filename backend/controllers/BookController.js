@@ -5,14 +5,39 @@ const {
   addBook,
 } = require("../models/BookManager");
 
+const { v4: uuidv4 } = require("uuid");
+const fs = require("fs");
+
 const getAllBooks = (req, res) => {
   selectAllBooks().then((result) => {
     res.send(result[0]);
   });
 };
 
+// console.warn(req.file);
+//peut etre que le pb vient du "path" seb a mis filename avec le chemin à la place de path
+// {
+//   fieldname: 'cover_image',
+//   originalname: 'Capture dâ\x80\x99Ã©cran (3).png',
+//   encoding: '7bit',
+//   mimetype: 'image/png',
+//   destination: './public/uploads/',
+//   filename: 'f73ce91256dd0b333d38602b5aaee9cc',
+//   path: 'public\\uploads\\f73ce91256dd0b333d38602b5aaee9cc',
+//   size: 3298633
+// }
 const postBook = (req, res) => {
-  const { title, author, cover_image } = req.body;
+  const { originalname, path } = req.file;
+
+  fs.renameSync(path, `./public/uploads/${uuidv4()}-${originalname}`);
+  (err) => {
+    if (err) throw err;
+    console.log("Rename completed!");
+  };
+
+  const { title, author } = req.body;
+  const cover_image = `./public/uploads/${uuidv4()}-${originalname}`;
+
   addBook({ title, author, cover_image }).then(([result]) => {
     if (result.affectedRows === 1) {
       res.status(201).json({ message: "Book added to db" });
