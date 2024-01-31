@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 //components
@@ -8,18 +8,40 @@ import { SearchBar } from "./SearchBar";
 import pencil from "../assets/icons/pencil.svg";
 import bin from "../assets/icons/bin.svg";
 import { NewBook } from "./NewBook";
+import { EditBookModal } from "./EditBookModal";
 
 export const ManageBooksContainer = ({
   books,
   manageBooksSearching,
   manageSearchValue,
 }) => {
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [img, setImg] = useState("");
+
   const [newBooks, setNewBooks] = useState(books);
   const [addingABook, setAddingABook] = useState(false);
+  const [editingBook, setEditingBook] = useState(false);
+  const [bookIWantToEdit, setBookIWantToEdit] = useState({});
+
+
 
   const handleAddBook = () => {
     setAddingABook(true);
   };
+
+  const editBook = (id) => {
+    setEditingBook(true);
+    const thisBook = books.filter((book) => book.id == id);
+    setBookIWantToEdit(thisBook[0]);
+  };
+
+
+
+  useEffect(() => {
+    console.log(bookIWantToEdit, "cleui la ");
+
+  }, [bookIWantToEdit])
 
   const deleteBook = (id) => {
     axios.delete(`http://localhost:5500/books/${id}`);
@@ -47,7 +69,7 @@ export const ManageBooksContainer = ({
             </button>
           </div>
         </header>
-        {addingABook && <NewBook setAddingABook={setAddingABook} />}
+        {addingABook && <NewBook setAddingABook={setAddingABook} title={title} author={author} img={img} setTitle={setTitle} setAuthor={setAuthor} setImg={setImg} />}
         <div className="adminTable">
           <table className="w-full">
             <thead className="bg-primaryDark text-white font-light">
@@ -59,13 +81,15 @@ export const ManageBooksContainer = ({
               </tr>
             </thead>
             <tbody>
+              {editingBook && <EditBookModal bookIWantToEdit={bookIWantToEdit} setEditingBook={setEditingBook} title={title} author={author} newBooks={newBooks} setNewBooks={setNewBooks}/>}
+
               {newBooks.map((book) => (
                 <tr key={book.id} className="border">
                   <th className="py-4 font-normal">{book.id}</th>
                   <th className="font-normal">{book.title}</th>
                   <th className=" font-normal">{book.author}</th>
                   <th className="flex justify-center gap-4 pt-6">
-                    <button>
+                    <button onClick={() => editBook(book.id)}>
                       <img src={pencil} alt="pencil icon" className="h-4" />
                     </button>
                     <button onClick={() => deleteBook(book.id)}>

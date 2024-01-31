@@ -10,6 +10,7 @@ const fs = require("fs");
 
 const getAllBooks = (req, res) => {
   selectAllBooks().then((result) => {
+    console.log(result[0], "res")
     res.send(result[0]);
   });
 };
@@ -29,14 +30,16 @@ const getAllBooks = (req, res) => {
 const postBook = (req, res) => {
   const { originalname, path } = req.file;
 
-  fs.renameSync(path, `./public/uploads/${uuidv4()}-${originalname}`);
+    const cover_image = `${uuidv4()}-${encodeURI(originalname)}`;
+  fs.renameSync(path, `./public/uploads/${cover_image}`);
   (err) => {
     if (err) throw err;
     console.log("Rename completed!");
   };
 
   const { title, author } = req.body;
-  const cover_image = `./public/uploads/${uuidv4()}-${originalname}`;
+  
+  console.log(cover_image);
 
   addBook({ title, author, cover_image }).then(([result]) => {
     if (result.affectedRows === 1) {

@@ -1,35 +1,39 @@
 import React, { useState } from "react";
-import axios from "axios";
 
-export const NewBook = ({ setAddingABook, title, author, img, setTitle, setAuthor, setImg}) => {
+//j'ai réussi à récupérer les nouvelles valeurs de title et author mtn j'ai plus qu'à les enregistrer et les envoyer vers ma bdd AVEC AXIOS et url avec id!!
+
+export const EditBookModal = ({
+  setEditingBook,
+  title,
+  author,
+  img,
+  setTitle,
+  setAuthor,
+  setImg,
+  bookIWantToEdit,
+}) => {
+  const [bookIHaveEdited, setBookIHaveEdited] = useState(bookIWantToEdit);
+  const [titleIHaveEdited, setTitleIHaveEdited] = useState(
+    bookIWantToEdit.title
+  );
+  const [authorIHaveEdited, setAuthorIHaveEdited] = useState(
+    bookIWantToEdit.author
+  );
+console.log(titleIHaveEdited, authorIHaveEdited,"les nouvelles donnes", bookIHaveEdited.title, bookIHaveEdited.author, "et la les anciennes");
 
   const handleCloseModal = () => {
-    setAddingABook(false);
+    setEditingBook(false);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const fd = new FormData();
-
-    fd.append("title", title);
-    fd.append("author", author);
-    fd.append("cover_image", img);
-
-    axios 
-      .post("http://localhost:5500/books", fd)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.error(err));
-    alert("file sent");
-  };
-  console.log(img, "image");
-
+  const handleSubmit = () => {};
+  //faut je meette mes nvlles données d'input dans un objet ou usestate en mettant bookiwanttoedit.title.. et l'autre  et ça ça sera les values que je
+  //pourrais mettre à jour avec target.Value
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="newBookModalContainer flex justify-center bg-primaryLight right-18 rounded-xl">
         <div className="flex justify-center flex-col gap-8">
           <div className="header flex justify-between  mx-2 items-center">
-            <h1 className="text-2xl text-primaryDark pt-2">New Book</h1>
+            <h1 className="text-2xl text-primaryDark pt-2">Edit Book</h1>
             <button onClick={handleCloseModal} className="cruse text-gray-500">
               X
             </button>
@@ -51,8 +55,8 @@ export const NewBook = ({ setAddingABook, title, author, img, setTitle, setAutho
                 autoFocus
                 required
                 name="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={titleIHaveEdited}
+                onChange={(e) => setTitleIHaveEdited(e.target.value)}
               />
               <label htmlFor="" className="text-gray-500 text-xl mr-2">
                 Author
@@ -63,8 +67,8 @@ export const NewBook = ({ setAddingABook, title, author, img, setTitle, setAutho
                 className="placeholder:italic bg-white pl-8 pr-28 py-4 rounded-md border-solid  border border-primaryDark"
                 required
                 name="author"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
+                value={authorIHaveEdited}
+                onChange={(e) => setAuthorIHaveEdited(e.target.value)}
               />{" "}
               <label htmlFor="" className="text-gray-500 text-xl mr-2">
                 Image
@@ -73,7 +77,8 @@ export const NewBook = ({ setAddingABook, title, author, img, setTitle, setAutho
                 type="file"
                 name="cover_image"
                 required
-                onChange={(e) => setImg(e.target.files[0])}
+                // value={bookIWantToEdit.cover_image}
+                // onChange={(e) => setImg(e.target.files[0])}
               />
               <div className="footer w-4/12 flex justify-around my-4">
                 <button
